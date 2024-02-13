@@ -1,0 +1,16 @@
+- hosts: all
+  tasks:
+  - name: Install Apache
+    yum:
+      name: httpd
+      state: latest
+  - name: Download foo.conf 
+    get_url:
+      url: https://www.free-css.com/assets/files/free-css-templates/download/page295/antique-cafe.zip
+      dest: /var/www/html
+     
+  - name: Unarchive a file that is already on the remote machine
+    unarchive:
+      src: /var/www/html/antique-cafe.zip
+      dest: /var/www/html/
+      remote_src: yes
